@@ -4,19 +4,10 @@ module Mailchimp
   class Client
     # @param token [String]
     # @param base_url [String, nil]
-    # @param server_prefix [String, nil]
     # @param max_retries [Integer]
     #
     # @return [void]
-    def initialize(token:, base_url: nil, server_prefix: nil, max_retries: 2)
-      unless server_prefix.nil?
-        server_prefix_value = server_prefix.nil? ? "us1" : server_prefix
-        environment_url_templates = {
-          Mailchimp::Environment::DEFAULT => "https://#{server_prefix_value}.api.mailchimp.com"
-        }
-        base_url = base_url.nil? ? "https://#{server_prefix_value}.api.mailchimp.com" : environment_url_templates.fetch(base_url, base_url)
-      end
-
+    def initialize(token:, base_url: nil, max_retries: 2)
       @raw_client = Mailchimp::Internal::Http::RawClient.new(
         base_url: base_url || Mailchimp::Environment::DEFAULT,
         headers: {

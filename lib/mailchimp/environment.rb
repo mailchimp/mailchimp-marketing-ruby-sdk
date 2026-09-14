@@ -2,6 +2,6 @@
 
 module Mailchimp
   class Environment
-    DEFAULT = "https://us1.api.mailchimp.com"
+    DEFAULT = "https://api.mailchimp.com"
   end
 end
