@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Mailchimp
-  VERSION = "0.0.160"
+  VERSION = "0.0.200"
 end
