@@ -37,10 +37,12 @@ module Mailchimp
           raise Mailchimp::Errors::TimeoutError
         end
         code = response.code.to_i
-        return if code.between?(200, 299)
-
-        error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
-        raise error_class.new(response.body, code: code)
+        if code.between?(200, 299)
+          Mailchimp::Internal::Types::Utils.coerce(Internal::Types::Array[Mailchimp::FileManager::Types::ListFileManagerResponseItem], (response.body.to_s.empty? ? nil : JSON.parse(response.body, symbolize_names: true)))
+        else
+          error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
       end
 
       # Get a list of available images and files stored in the File Manager for the account.
@@ -102,7 +104,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::FileManager::Types::ListFilesFileManagerResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::FileManager::Types::ListFilesFileManagerResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -144,7 +146,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::GalleryFile.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::GalleryFile.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -188,7 +190,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::GalleryFile.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::GalleryFile.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -265,7 +267,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::GalleryFile.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::GalleryFile.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -325,7 +327,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::FileManager::Types::ListFoldersFileManagerResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::FileManager::Types::ListFoldersFileManagerResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -364,7 +366,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::FileManager::Types::CreateFolderFileManagerResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::FileManager::Types::CreateFolderFileManagerResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -408,7 +410,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::FileManager::Types::GetFolderFileManagerResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::FileManager::Types::GetFolderFileManagerResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -488,7 +490,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::FileManager::Types::UpdateFolderFileManagerResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::FileManager::Types::UpdateFolderFileManagerResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -555,7 +557,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::FileManager::Types::ListFolderFilesFileManagerResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::FileManager::Types::ListFolderFilesFileManagerResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)

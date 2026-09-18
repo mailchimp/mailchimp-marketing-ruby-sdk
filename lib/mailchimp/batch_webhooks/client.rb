@@ -57,7 +57,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::BatchWebhooks::Types::ListBatchWebhooksResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::BatchWebhooks::Types::ListBatchWebhooksResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -80,7 +80,7 @@ module Mailchimp
       # @example
       #   client.batch_webhooks.create(url: "http://yourdomain.com/webhook")
       #
-      # @return [Mailchimp::Types::BatchWebhook]
+      # @return [Mailchimp::BatchWebhooks::Types::CreateBatchWebhooksResponse]
       def create(request_options: {}, **params)
         params = Mailchimp::Internal::Types::Utils.normalize_keys(params)
         request = Mailchimp::Internal::JSON::Request.new(
@@ -97,7 +97,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::BatchWebhook.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::BatchWebhooks::Types::CreateBatchWebhooksResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -141,7 +141,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::BatchWebhook.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::BatchWebhook.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -218,7 +218,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::BatchWebhook.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::BatchWebhook.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
