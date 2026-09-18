@@ -12,8 +12,6 @@ module Mailchimp
 
       field :signing_enabled, -> { Internal::Types::Boolean }, optional: true, nullable: false
 
-      field :signing_secret, -> { String }, optional: true, nullable: false
-
       field :url, -> { String }, optional: true, nullable: false
     end
   end

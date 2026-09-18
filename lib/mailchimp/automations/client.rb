@@ -67,7 +67,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Automations::Types::ListAutomationsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Automations::Types::ListAutomationsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -111,7 +111,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::AutomationWorkflow.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::AutomationWorkflow.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -156,7 +156,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::AutomationWorkflow.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::AutomationWorkflow.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -299,7 +299,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Automations::Types::ListEmailsAutomationsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Automations::Types::ListEmailsAutomationsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -340,7 +340,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::AutomationWorkflowEmail.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::AutomationWorkflowEmail.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -428,7 +428,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::AutomationWorkflowEmail.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::AutomationWorkflowEmail.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -547,7 +547,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Automations::Types::ListEmailQueueAutomationsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Automations::Types::ListEmailQueueAutomationsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -595,7 +595,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::SubscriberInAutomationQueue.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::SubscriberInAutomationQueue.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -638,7 +638,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::SubscriberInAutomationQueue.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::SubscriberInAutomationQueue.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -675,7 +675,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Automations::Types::ListRemovedSubscribersAutomationsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Automations::Types::ListRemovedSubscribersAutomationsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -722,7 +722,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::SubscriberRemovedFromAutomationWorkflow.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::SubscriberRemovedFromAutomationWorkflow.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -763,7 +763,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::SubscriberRemovedFromAutomationWorkflow.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::SubscriberRemovedFromAutomationWorkflow.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

@@ -38,7 +38,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::VerifiedDomains::Types::ListVerifiedDomainsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::VerifiedDomains::Types::ListVerifiedDomainsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -75,7 +75,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::VerifiedDomains::Types::CreateVerifiedDomainsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::VerifiedDomains::Types::CreateVerifiedDomainsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -112,7 +112,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::VerifiedDomains::Types::GetVerifiedDomainsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::VerifiedDomains::Types::GetVerifiedDomainsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -192,7 +192,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::VerifiedDomains::Types::CreateActionVerifyVerifiedDomainsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::VerifiedDomains::Types::CreateActionVerifyVerifiedDomainsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

@@ -57,7 +57,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Types::CampaignFolders.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Types::CampaignFolders.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -96,7 +96,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::CampaignFolders.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::CampaignFolders.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -140,7 +140,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::CampaignFolders::Types::GetCampaignFoldersResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::CampaignFolders::Types::GetCampaignFoldersResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -220,7 +220,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::CampaignFolders::Types::UpdateCampaignFoldersResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::CampaignFolders::Types::UpdateCampaignFoldersResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

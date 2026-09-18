@@ -63,7 +63,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -109,7 +109,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::CampaignReport.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::CampaignReport.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -153,7 +153,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Reports::Types::ListAbuseReportsReportsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListAbuseReportsReportsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -201,7 +201,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::AbuseComplaint.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::AbuseComplaint.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -246,7 +246,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Reports::Types::ListAdviceReportsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListAdviceReportsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -307,7 +307,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListClickDetailsReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListClickDetailsReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -359,7 +359,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::ClickDetailReport.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::ClickDetailReport.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -418,7 +418,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListClickDetailMembersReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListClickDetailMembersReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -470,7 +470,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::ClickDetailMember.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::ClickDetailMember.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -514,7 +514,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Reports::Types::ListDomainPerformanceReportsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListDomainPerformanceReportsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -571,7 +571,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListEcommerceProductActivityReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListEcommerceProductActivityReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -617,7 +617,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Reports::Types::ListEepurlReportsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListEepurlReportsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -676,7 +676,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListEmailActivityReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListEmailActivityReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -730,7 +730,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::EmailActivity.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::EmailActivity.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -785,7 +785,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListLocationsReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListLocationsReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -853,7 +853,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListOpenDetailsReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListOpenDetailsReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -905,7 +905,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::OpenActivity.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::OpenActivity.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -960,7 +960,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListSentToReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListSentToReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -1010,7 +1010,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::SentTo.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::SentTo.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1054,7 +1054,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Reports::Types::ListSubReportsReportsResponse.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListSubReportsReportsResponse.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)
@@ -1109,7 +1109,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::Reports::Types::ListUnsubscribedReportsResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::Reports::Types::ListUnsubscribedReportsResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
@@ -1159,7 +1159,7 @@ module Mailchimp
         end
         code = response.code.to_i
         if code.between?(200, 299)
-          Mailchimp::Types::Unsubscribes.load(response.body)
+          (response.body.to_s.empty? ? nil : Mailchimp::Types::Unsubscribes.load(response.body))
         else
           error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
           raise error_class.new(response.body, code: code)

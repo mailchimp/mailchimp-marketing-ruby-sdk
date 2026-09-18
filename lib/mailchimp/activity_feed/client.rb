@@ -37,10 +37,12 @@ module Mailchimp
           raise Mailchimp::Errors::TimeoutError
         end
         code = response.code.to_i
-        return if code.between?(200, 299)
-
-        error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
-        raise error_class.new(response.body, code: code)
+        if code.between?(200, 299)
+          Mailchimp::Internal::Types::Utils.coerce(Internal::Types::Array[Mailchimp::ActivityFeed::Types::ListActivityFeedResponseItem], (response.body.to_s.empty? ? nil : JSON.parse(response.body, symbolize_names: true)))
+        else
+          error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)
+          raise error_class.new(response.body, code: code)
+        end
       end
 
       # Return the Chimp Chatter for this account ordered by most recent.
@@ -86,7 +88,7 @@ module Mailchimp
           end
           code = response.code.to_i
           if code.between?(200, 299)
-            parsed_response = Mailchimp::ActivityFeed::Types::ListChimpChatterActivityFeedResponse.load(response.body)
+            parsed_response = (response.body.to_s.empty? ? nil : Mailchimp::ActivityFeed::Types::ListChimpChatterActivityFeedResponse.load(response.body))
             [parsed_response, response]
           else
             error_class = Mailchimp::Errors::ResponseError.subclass_for_code(code)

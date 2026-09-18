@@ -33,6 +33,11 @@ module Mailchimp
       @activity_feed ||= Mailchimp::ActivityFeed::Client.new(client: @raw_client)
     end
 
+    # @return [Mailchimp::Audiences::Client]
+    def audiences
+      @audiences ||= Mailchimp::Audiences::Client.new(client: @raw_client)
+    end
+
     # @return [Mailchimp::AuthorizedApps::Client]
     def authorized_apps
       @authorized_apps ||= Mailchimp::AuthorizedApps::Client.new(client: @raw_client)

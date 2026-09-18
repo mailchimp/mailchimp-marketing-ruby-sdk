@@ -31,11 +31,6 @@ module Mailchimp
         VIDEO_CALL_TRANSCRIPTS = "video_call_transcripts"
         WHATSAPP_BULK_SENT = "whatsapp_bulk_sent"
         WHATSAPP_DELIVERED = "whatsapp_delivered"
-        WHATSAPP_LINK_CLICK = "whatsapp_link_click"
-        WHATSAPP_SUBSCRIBE = "whatsapp_subscribe"
-        WHATSAPP_SUBSCRIPTION_PHONE_UPDATED = "whatsapp_subscription_phone_updated"
-        WHATSAPP_UNSUBSCRIBE = "whatsapp_unsubscribe"
-        WHATSAPP_USED_KEYWORD = "whatsapp_used_keyword"
       end
     end
   end
