@@ -11,6 +11,7 @@ module Mailchimp
       @raw_client = Mailchimp::Internal::Http::RawClient.new(
         base_url: base_url || Mailchimp::Environment::DEFAULT,
         headers: {
+          "User-Agent" => "mailchimp-marketing/0.0.219",
           "X-Fern-Language" => "Ruby",
           Authorization: "Bearer #{token}"
         },
