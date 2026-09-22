@@ -30,14 +30,20 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-ruby-sdk: 1.25.0
-current_generation: 3c16374c570a7d537e71c958158aebc3de898fb9
+  - commit_sha: 81ccd260d2991f069aadd3618760791e9ac066de
+    tree_hash: 577d468c9d434eb5ad63da252d4182c817be7f28
+    timestamp: 2026-09-22T21:35:34.817Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-ruby-sdk: 1.26.1
+current_generation: 81ccd260d2991f069aadd3618760791e9ac066de
 patches:
   - id: patch-d5170c63
     content_hash: sha256:5aa0ab7d1c9a8fc8707af20bf7b288559814ade3249c18db4e3a761713e2f91a
     original_commit: d5170c63f3eb3429da2708fc5ad6f9925b611aca
     original_message: Create LICENSE file
     original_author: Keith Baxter <keith_baxter@intuit.com>
-    base_generation: 3c16374c570a7d537e71c958158aebc3de898fb9
+    base_generation: 81ccd260d2991f069aadd3618760791e9ac066de
     files:
       - LICENSE
       - NOTICE
